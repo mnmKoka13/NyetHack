@@ -13,6 +13,10 @@ fun main() {
     // Player Status
     printPlayerStatus(auraColor, isBlessed, name, healthStatus)
 
+    // Cast Fireball
+    castFireBall(5)
+    castFireBall() // Default value
+
 }
 
 private fun printPlayerStatus(
@@ -48,4 +52,8 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean): String {
         else -> "is in awful condition!"
     }
     return healthStatus
+}
+
+private fun castFireBall(numFireballs: Int = 2) {
+    println("A glass of Fireball springs into existence. (x$numFireballs)")
 }
