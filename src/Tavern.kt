@@ -9,5 +9,8 @@ fun main(args: Array<String>) {
     } else {
         println("I can't do that without crashing -beverage was null!")
     }
-    println(beverage)
+
+    // null合体演算子
+    val beverageServed: String = beverage ?: "Butter Ale"
+    println(beverageServed)
 }
