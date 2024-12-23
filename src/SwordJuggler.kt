@@ -15,7 +15,9 @@ fun main(args: Array<String>) {
 }
 
 fun proficiencyCheck(swordsJuggling: Int?) {
-    swordsJuggling ?: throw UnskilledSwordJugglerException()
+//    swordsJuggling ?: throw UnskilledSwordJugglerException()
+    // 事前条件関数を使う
+    checkNotNull(swordsJuggling, { "Playler cannot juggle swords" })
 }
 
 // カスタム例外クラス
