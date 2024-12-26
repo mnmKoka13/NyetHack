@@ -1,8 +1,7 @@
-const val TAVERN_NAME = "Taernyl's Folly"
+//const val TAVERN_NAME = "Taernyl's Folly"
 
 fun main(args: Array<String>) {
     placeOrder("shandy,Dragon's Breath,5.91")
-    placeOrder(("elixir,Shirley's Temple,4.12"))
 }
 
 private fun placeOrder(menuData: String) {
@@ -20,7 +19,7 @@ private fun placeOrder(menuData: String) {
     println(message)
 
     val phrase = if (name == "Dragon's Breath") {
-        println("Madrigal exclaims: ${toDragonSpeak("Ah, delicious $name!")}")
+        println("Madrigal exclaims: ${toDragonSpeak("DRAGON'S BREATH: IT'S GOT WHAT ADVENTURERS CRAVE!")}")
     } else {
         "Madrigal says: Thanks for the $name."
     }
@@ -28,13 +27,13 @@ private fun placeOrder(menuData: String) {
 }
 
 private fun toDragonSpeak(phrase: String) =
-    phrase.replace(Regex("[aeiou]")) {
+    phrase.replace(Regex("[aeiouAEIOU]")) {
         when(it.value) {
-            "a" -> "4"
-            "e" -> "3"
-            "i" -> "1"
-            "o" -> "0"
-            "u" -> "|_|"
+            "a", "A" -> "4"
+            "e", "E" -> "3"
+            "i", "I" -> "1"
+            "o", "O" -> "0"
+            "u", "U" -> "|_|"
             else -> it.value
         }
     }
