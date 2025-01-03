@@ -19,15 +19,29 @@ fun main(args: Array<String>) {
         println("The tavern master says: Nay, they departed hours ago.")
     }
 
-    placeOrder("shandy,Dragon's Breath,5.91")
-//    placeOrder(("elixir,Shirley's Temple,4.12"))
+    // ミュータブルリストの操作
+//    println(patronList)
+//    patronList.remove("Eli")
+//    patronList.add("Alex")
+//    patronList.add(0, "Alex")
+//    patronList[0] = "Alexis"
+//    println(patronList)
 
-    println(patronList)
-    patronList.remove("Eli")
-    patronList.add("Alex")
-    patronList.add(0, "Alex")
-    patronList[0] = "Alexis"
-    println(patronList)
+    // for文
+//    for (patron in patronList) {
+//        println("Good evening, $patron")
+//    }
+
+    // 同じ処理をforEachで書く
+//    patronList.forEach{ patron ->
+//        println("Good evening, $patron")
+//    }
+
+    // forEachIndexed
+    patronList.forEachIndexed { index, patron ->
+        println("Good evening, $patron - you're #${index + 1} in line.")
+        placeOrder(patron, "shnady,Dragon's Breath,5.91")
+    }
 }
 
 fun performPurchase(price: Double) {
@@ -51,10 +65,10 @@ private fun displayBalance() {
     println("Player's purse balance: Gold: $playerGold , Silver: $playerSilver")
 }
 
-private fun placeOrder(menuData: String) {
+private fun placeOrder(patronName: String, menuData: String) {
     val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
     val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
-    println("Madrigal speaks with $tavernMaster about their order.")
+    println("$patronName speaks with $tavernMaster about their order.")
 
 //    val data = menuData.split(',')
 //    val type = data[0]
@@ -62,15 +76,15 @@ private fun placeOrder(menuData: String) {
 //    val price = data[2]
     // 1行で書く
     val (type, name, price) = menuData.split(',')
-    val message = "Madrigal buys a $name($type) of $price."
+    val message = "$patronName buys a $name($type) of $price."
     println(message)
 
-    performPurchase(price.toDouble())
+//    performPurchase(price.toDouble())
 
     val phrase = if (name == "Dragon's Breath") {
-        println("Madrigal exclaims: ${toDragonSpeak("Ah, delicious $name!")}")
+        println("$patronName exclaims: ${toDragonSpeak("Ah, delicious $name!")}")
     } else {
-        "Madrigal says: Thanks for the $name."
+        "$patronName says: Thanks for the $name."
     }
     println(phrase)
 }
