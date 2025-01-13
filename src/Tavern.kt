@@ -32,6 +32,14 @@ fun main(args: Array<String>) {
         uniquePatrons += name
     }
     println(uniquePatrons)
+
+    var orderCount = 0
+    while (orderCount < 10) {
+        println("========")
+        placeOrder(uniquePatrons.shuffled().first(),
+            menuList.shuffled().first())
+        orderCount++
+    }
 }
 
 fun performPurchase(price: Double) {
