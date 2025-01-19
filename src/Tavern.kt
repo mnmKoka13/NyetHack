@@ -11,6 +11,7 @@ val uniquePatrons = mutableSetOf<String>()
 val menuList = File("data/tavern-menu-items.txt")
     .readText()
     .split("\n")
+val patronGold = mutableMapOf<String, Double>()
 
 fun main(args: Array<String>) {
     if (patronList.contains("Eli")) {
@@ -31,7 +32,10 @@ fun main(args: Array<String>) {
         val name = "$first $last"
         uniquePatrons += name
     }
-    println(uniquePatrons)
+    uniquePatrons.forEach {
+        patronGold[it] = 6.0
+    }
+
 
     var orderCount = 0
     while (orderCount < 10) {
@@ -40,6 +44,7 @@ fun main(args: Array<String>) {
             menuList.shuffled().first())
         orderCount++
     }
+
 }
 
 fun performPurchase(price: Double) {
@@ -68,16 +73,10 @@ private fun placeOrder(patronName: String, menuData: String) {
     val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
     println("$patronName speaks with $tavernMaster about their order.")
 
-//    val data = menuData.split(',')
-//    val type = data[0]
-//    val name = data[1]
-//    val price = data[2]
-    // 1行で書く
+
     val (type, name, price) = menuData.split(',')
     val message = "$patronName buys a $name($type) of $price."
     println(message)
-
-//    performPurchase(price.toDouble())
 
     val phrase = if (name == "Dragon's Breath") {
         println("$patronName exclaims: ${toDragonSpeak("Ah, delicious $name!")}")
