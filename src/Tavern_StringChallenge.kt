@@ -1,3 +1,5 @@
+import com.bignerdranch.nyethack.TAVERN_NAME
+
 //const val TAVERN_NAME = "Taernyl's Folly"
 
 fun main(args: Array<String>) {

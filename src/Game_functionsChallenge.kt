@@ -11,7 +11,7 @@ fun main() {
     // Health Status
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 
-    // Player Status
+    // com.bignerdranch.nyethack.Player Status
     printPlayerStatus(auraColor, isBlessed, name, healthStatus)
 
     // Cast Fireball

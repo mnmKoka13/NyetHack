@@ -1,3 +1,4 @@
+import com.bignerdranch.nyethack.TAVERN_NAME
 import kotlin.math.roundToInt
 
 var playerGold = 10
@@ -30,7 +31,7 @@ fun performPurchase2(price: Double) {
 }
 
 private fun displayBalance() {
-    println("Player's purse balance: Gold: $playerGold , Silver: $playerSilver")
+    println("com.bignerdranch.nyethack.Player's purse balance: Gold: $playerGold , Silver: $playerSilver")
 }
 
 private fun placeOrder(menuData: String) {

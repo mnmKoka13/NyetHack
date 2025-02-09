@@ -27,7 +27,7 @@ fun main() {
         else -> "is in awful condition!"
     }
 
-    // Player Status
+    // com.bignerdranch.nyethack.Player Status
     val statusFormatString = ("(HP: $healthPoints)(Aura: ${if (auraVisible) auraColor else "NONE"})"
             + "-> $name $healthStatus")
 

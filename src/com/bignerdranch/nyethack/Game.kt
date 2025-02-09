@@ -1,12 +1,14 @@
+package com.bignerdranch.nyethack
+
 fun main() {
-    // Player
+    // com.bignerdranch.nyethack.Player
     val player = Player()
     player.castFireball()
 
     // Aura
     val auraColor = player.auraColor()
 
-    // Player Status
+    // com.bignerdranch.nyethack.Player Status
     printPlayerStatus(player)
 
 }

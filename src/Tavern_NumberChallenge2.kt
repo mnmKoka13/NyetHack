@@ -1,4 +1,4 @@
-import kotlin.math.roundToInt
+import com.bignerdranch.nyethack.TAVERN_NAME
 
 var playerGold2 = 0
 var playerSilver2 = 0
@@ -26,7 +26,7 @@ fun performPurchase3(price: Double) {
 }
 
 private fun displayBalance() {
-    println("Player's purse balance: DragonCoin: ${"%.4f".format(playerDragonCoin)} Gold: $playerGold2 , Silver: $playerSilver2")
+    println("com.bignerdranch.nyethack.Player's purse balance: DragonCoin: ${"%.4f".format(playerDragonCoin)} Gold: $playerGold2 , Silver: $playerSilver2")
 }
 
 private fun displayRemainingDragonsBreath() {

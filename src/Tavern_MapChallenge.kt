@@ -1,3 +1,4 @@
+import com.bignerdranch.nyethack.*
 
 fun main(args: Array<String>) {
     if (patronList.contains("Eli")) {
@@ -26,7 +27,8 @@ fun main(args: Array<String>) {
     var orderCount = 0
     while (orderCount < 10 && uniquePatrons.size > 0) {
         println("========")
-        placeOrder(uniquePatrons.shuffled().first(),
+        placeOrder(
+            uniquePatrons.shuffled().first(),
             menuList.shuffled().first())
         orderCount++
     }
