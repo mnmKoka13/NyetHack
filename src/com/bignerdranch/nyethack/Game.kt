@@ -2,7 +2,7 @@ package com.bignerdranch.nyethack
 
 fun main() {
     // com.bignerdranch.nyethack.Player
-    val player = Player()
+    val player = Player("Madrigal")
     player.castFireball()
 
     // Aura
@@ -10,7 +10,6 @@ fun main() {
 
     // com.bignerdranch.nyethack.Player Status
     printPlayerStatus(player)
-
 }
 
 private fun printPlayerStatus(player: Player) {

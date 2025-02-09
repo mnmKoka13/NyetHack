@@ -1,16 +1,27 @@
 package com.bignerdranch.nyethack
 
-class Player {
+class Player(_name: String,
+            var healthPoints: Int = 100,
+            var isBlessed: Boolean,
+            private val isImmortal: Boolean) {
     // プロパティ
-    var name = "madrigal"
+    var name = _name
         get() = field.capitalize()
         private set(value) {
             field = value.trim()
         }
 
-    var healthPoints = 89
-    val isBlessed = true
-    private val isImmortal = false
+    // 初期化ブロック
+    init {
+        require(healthPoints > 0, {"healthPoints must be greater than zero."})
+        require(name.isNotBlank(), {"Player must have a name"})
+    }
+
+    constructor(name: String): this(name,
+            isBlessed = true,
+            isImmortal = false) {
+        if (name.toLowerCase() == "kar") healthPoints = 40
+    }
 
     // クラスメソッド
     fun castFireball(numFireballs: Int = 2) =
