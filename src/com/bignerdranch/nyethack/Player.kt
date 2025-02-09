@@ -1,15 +1,19 @@
 package com.bignerdranch.nyethack
 
+import java.io.File
+
 class Player(_name: String,
             var healthPoints: Int = 100,
             var isBlessed: Boolean,
             private val isImmortal: Boolean) {
     // プロパティ
     var name = _name
-        get() = field.capitalize()
+        get() = "${field.capitalize()} of $hometown"
         private set(value) {
             field = value.trim()
         }
+
+    val hometown = selectHometown()
 
     // 初期化ブロック
     init {
@@ -46,4 +50,10 @@ class Player(_name: String,
             in 15..74 -> "looks pretty hurt."
             else -> "is in awful condition!"
         }
+
+    private fun selectHometown() = File("data/towns.txt")
+        .readText()
+        .split("\n")
+        .shuffled()
+        .first()
 }
