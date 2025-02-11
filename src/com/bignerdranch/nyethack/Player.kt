@@ -13,7 +13,7 @@ class Player(_name: String,
             field = value.trim()
         }
 
-    val hometown = selectHometown()
+    val hometown by lazy { selectHometown() }
 
     // 初期化ブロック
     init {
@@ -21,6 +21,7 @@ class Player(_name: String,
         require(name.isNotBlank(), {"Player must have a name"})
     }
 
+    // セカンダリコンストラクタ
     constructor(name: String): this(name,
             isBlessed = true,
             isImmortal = false) {
