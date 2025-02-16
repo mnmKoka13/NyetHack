@@ -1,5 +1,8 @@
 package com.bignerdranch.nyethack
 
+import Room
+import TownSquare
+
 fun main() {
     // com.bignerdranch.nyethack.Player
     val player = Player("Madrigal")
@@ -7,6 +10,10 @@ fun main() {
 
     // Aura
     val auraColor = player.auraColor()
+
+    var currentRoom: Room = TownSquare()
+    println(currentRoom.description())
+    println(currentRoom.load())
 
     // com.bignerdranch.nyethack.Player Status
     printPlayerStatus(player)
