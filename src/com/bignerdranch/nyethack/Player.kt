@@ -1,5 +1,6 @@
 package com.bignerdranch.nyethack
 
+import Coordinate
 import java.io.File
 
 class Player(_name: String,
@@ -13,7 +14,10 @@ class Player(_name: String,
             field = value.trim()
         }
 
+    // by lazy: プロパティの初期化を遅延させる
+    // デリゲート: プロパティの値を取得する際に、その処理を他のオブジェクトに委譲する。初期化の手順を示すテンプレート。
     val hometown by lazy { selectHometown() }
+    var currentPosition = Coordinate(0, 0)
 
     // 初期化ブロック
     init {
