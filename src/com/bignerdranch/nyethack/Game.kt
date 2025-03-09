@@ -15,6 +15,7 @@ fun main() {
 object Game {
     val player = Player("Madrigal")
     var currentRoom: Room = TownSquare()
+    var continueFlg = true
 
     private var worldMap = listOf(
         listOf(currentRoom, Room("Tavern"), Room("Back Room")),
@@ -27,7 +28,7 @@ object Game {
     }
 
     fun play() {
-        while (true) {
+        while (continueFlg) {
             // Play NyetHack
             println(currentRoom.description())
             println(currentRoom.load())
@@ -54,11 +55,16 @@ object Game {
 
         fun processCommand() = when (command.toLowerCase()) {
             "move" -> move(argument)
+            "quit" -> quitGame()
+            "exit" -> quitGame()
+            "map" -> viewMap()
+            "ring" -> if (currentRoom is TownSquare) (currentRoom as TownSquare).ringBell() else "You're not in TownSquare."
             else -> commandNotFound()
         }
 
         private fun commandNotFound() = "I'm not quite sure what you're trying to do!"
     }
+
 
     private fun move(directionInput: String) =
         try {
@@ -77,4 +83,21 @@ object Game {
             "Invalid direction: $directionInput"
         }
 
+    private fun quitGame() {
+        println("farewell message to the adventurer.")
+        continueFlg = false
+    }
+
+    private fun viewMap() {
+        for (y in 0 until worldMap.size) {
+            for (x in 0 until worldMap[y].size) {
+                if (worldMap[y][x] == currentRoom) {
+                    print("X ")
+                } else {
+                    print("O ")
+                }
+            }
+            println("")
+        }
+    }
 }
