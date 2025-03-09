@@ -1,12 +1,13 @@
 package com.bignerdranch.nyethack
 
 import Coordinate
+import Fightable
 import java.io.File
 
 class Player(_name: String,
-            var healthPoints: Int = 100,
+            override var healthPoints: Int = 100,
             var isBlessed: Boolean,
-            private val isImmortal: Boolean) {
+            private val isImmortal: Boolean): Fightable {
     // プロパティ
     var name = _name
         get() = "${field.capitalize()} of $hometown"
@@ -18,6 +19,9 @@ class Player(_name: String,
     // デリゲート: プロパティの値を取得する際に、その処理を他のオブジェクトに委譲する。初期化の手順を示すテンプレート。
     val hometown by lazy { selectHometown() }
     var currentPosition = Coordinate(0, 0)
+
+    override val diceCount = 3
+    override val diceSides = 6
 
     // 初期化ブロック
     init {
@@ -61,4 +65,15 @@ class Player(_name: String,
         .split("\n")
         .shuffled()
         .first()
+
+    override fun attack(opponent: Fightable): Int {
+        val damageDealt = if (isBlessed) {
+            damageRoll * 2
+        } else {
+            damageRoll
+        }
+
+        opponent.healthPoints -= damageDealt
+        return damageDealt
+    }
 }
